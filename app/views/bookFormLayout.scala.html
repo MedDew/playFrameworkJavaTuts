@@ -2,9 +2,9 @@
 @import helper._;
 
 @helper.form(action = route){
-    @helper.inputText(bookForm("id"))
-    @helper.inputText(bookForm("title"))
-    @helper.inputText(bookForm("price"))
-    @helper.inputText(bookForm("author"))
+    @helper.inputText(bookForm("id"), 'class -> "form-control")
+    @helper.inputText(bookForm("title"), 'class -> "form-control")
+    @helper.inputText(bookForm("price"), 'class -> "form-control")
+    @helper.inputText(bookForm("author"), 'class -> "form-control")
     @button
 }

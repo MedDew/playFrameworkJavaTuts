@@ -4,6 +4,9 @@
         <h1>Create Book</h1>
 
         @bookFormLayout(bookForm, routes.BooksController.save()){
-            <input type="submit" value="Create book">
+            <button type="submit" class="btn btn-success" >
+                <i class="fas fa-plus"></i>
+                Create Book
+            </button>
         }
 }

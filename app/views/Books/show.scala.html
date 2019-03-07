@@ -3,15 +3,16 @@
         <h2>@book.title</h2>
         <p>Price : @book.price</p>
         <p>Author : @book.author</p>
-        <div>
-            <a href="@routes.BooksController.edit(book.id)">
-                Edit
-            </a>
-        </div>
-
-        <div>
-            <a href="@routes.BooksController.destroy(book.id)">
-                Delete
-            </a>
+        <div class="row">
+            <div class="col-1">
+                <a class="btn btn-primary" href="@routes.BooksController.edit(book.id)">
+                    Edit
+                </a>
+            </div>
+            <div class="col-1">
+                <a class="btn btn-danger" href="@routes.BooksController.destroy(book.id)">
+                    Delete
+                </a>
+            </div>
         </div>
 }

@@ -1,20 +1,9 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
-
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "java")
-
+@layout("All Books"){
+ <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+   <h1 class="display-4">Book Store App</h1>
+   <h3>Build Using Play Framework 2.6</h3>
+   <p class="lead">Play Framework Java 2.6</p>
+  </div>
+ </div>
 }

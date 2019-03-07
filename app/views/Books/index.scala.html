@@ -2,14 +2,8 @@
 @layout("All Books"){
         <h1>All Books</h1>
         @for(book <- bookList){
-        <a href=@routes.BooksController.show(book.id)>@book.title</a>
+        <a href=@routes.BooksController.show(book.id) class="btn btn-link">@book.title</a>
         <p>@book.price</p>
         <p>@book.author</p>
         }
-
-        <div>
-            <a href="@routes.BooksController.create()">
-                Create Book
-            </a>
-        </div>
 }
