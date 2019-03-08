@@ -28,4 +28,5 @@ GET /books/edit/:id  controllers.BooksController.edit(id : Integer)
 +nocsrf
 POST /books/edit  controllers.BooksController.update()
 
-GET /books/delete/:id controllers.BooksController.destroy(id : Integer)
++nocsrf
+DELETE /books/delete/:id controllers.BooksController.destroy(id : Integer)

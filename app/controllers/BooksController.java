@@ -97,11 +97,14 @@ public class BooksController extends Controller {
 //        Book bookToDelete = Book.findById(id);
         Book bookToDelete = Book.finder.byId(id);
         if(bookToDelete == null){
+            flash("warning", "Book not found");
             return notFound("Book not found");
         }
 //        Book.remove(bookToDelete);
         bookToDelete.delete();
-        return redirect(routes.BooksController.index());
+        flash("success", "Book deleted successfully");
+//        return redirect(routes.BooksController.index());
+        return ok();
     }
 
     public Result show(Integer id){
