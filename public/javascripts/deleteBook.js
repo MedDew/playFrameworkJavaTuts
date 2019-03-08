@@ -2,7 +2,7 @@ function sendDeleteRequest(deleteUrl, redirectUrl){
 //    $(document).ready(function(){
         console.log("Delete Book "+deleteUrl);
          $.ajax({
-                url: "/books/delete/100",//
+                url: deleteUrl,//"/books/delete/100"
                 method: "DELETE",
                 success: function(){
                     window.location = redirectUrl;

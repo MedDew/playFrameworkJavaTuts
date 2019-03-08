@@ -30,3 +30,4 @@ PUT /books/edit  controllers.BooksController.update()
 
 +nocsrf
 DELETE /books/delete/:id controllers.BooksController.destroy(id : Integer)
+#GET /books/delete/:id controllers.BooksController.destroy(id : Integer)
