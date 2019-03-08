@@ -37,6 +37,11 @@ public class BooksController extends Controller {
 
     public Result save(){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest();
+
+        if(bookForm.hasErrors()){
+            flash("danger", "Please fill the form below");
+            return badRequest(create.render(bookForm));
+        }
         Book book = bookForm.get();
         /*DynamicForm bookForm = formFactory.form().bindFromRequest();
         Optional<DynamicForm.Dynamic> book = bookForm.value();
@@ -48,6 +53,7 @@ public class BooksController extends Controller {
 
 //        Book.add(book);
         book.save();
+        flash("success", "Book saved successfully");
         return redirect(routes.BooksController.index());
     }
 
@@ -64,6 +70,12 @@ public class BooksController extends Controller {
 
     public Result update(){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest();
+
+        if(bookForm.hasErrors()){
+            flash("danger", "Please correct the form below");
+            return badRequest(edit.render(bookForm));
+        }
+
         Book book = bookForm.get();
 //        Book bookUpdate = Book.findById(book.id);
         Book bookUpdate = Book.finder.byId(book.id);
@@ -77,6 +89,7 @@ public class BooksController extends Controller {
 
 //        bookUpdate.save();
         bookUpdate.update();
+        flash("success", "Book updated successfully");
         return redirect(routes.BooksController.index());
     }
 

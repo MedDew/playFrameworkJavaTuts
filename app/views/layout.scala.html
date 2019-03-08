@@ -49,6 +49,16 @@
         </div>
     </nav>
     <div class="container">
+        @for(key <- Array("danger","info", "success", "warning")){
+            @if(flash.containsKey(key)){
+                <div class="alert alert-@key">
+                    @flash.get(key)
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                        <i class="far fa-times-circle"></i>
+                    </a>
+                </div>
+            }
+        }
         @body
     </div>
 
