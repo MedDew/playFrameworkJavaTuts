@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import views.html.errors._404;
 
 
 public class BooksController extends Controller {
@@ -63,7 +64,8 @@ public class BooksController extends Controller {
         Book bookFound = Book.finder.byId(id);
         if(bookFound == null){
             flash("warning", "Book not found");
-            return notFound("Book not found");
+            String message = "The book to update does not exist";
+            return notFound(_404.render(message));
         }
         Form<Book> bookForm = formFactory.form(Book.class).fill(bookFound);
 //        bookForm.fill(bookFound);
@@ -105,7 +107,10 @@ public class BooksController extends Controller {
         Book bookToDelete = Book.finder.byId(id);
         if(bookToDelete == null){
             flash("warning", "Book not found");
-            return notFound("Book not found");
+            String message = "The book to delete does not exist";
+            //TEMPLATE ONLY WORKS WITH GET REQUEST NOT DELETE
+            return notFound(_404.render(message));
+//            return notFound("Book not found");
         }
 //        Book.remove(bookToDelete);
         bookToDelete.delete();
@@ -119,7 +124,9 @@ public class BooksController extends Controller {
         Book book = Book.finder.byId(id);
 
         if(book == null){
-            return notFound("Book not found");
+            String message = "The book to view does not exist";
+            return notFound(_404.render(message));
+//            return notFound("Book not found");
         }
 
         return ok(show.render(book));
