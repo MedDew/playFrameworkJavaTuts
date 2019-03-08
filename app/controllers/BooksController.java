@@ -5,6 +5,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import views.html.Books.create;
 import views.html.Books.index;
@@ -61,6 +62,7 @@ public class BooksController extends Controller {
 //        Book bookFound = Book.findById(id);
         Book bookFound = Book.finder.byId(id);
         if(bookFound == null){
+            flash("warning", "Book not found");
             return notFound("Book not found");
         }
         Form<Book> bookForm = formFactory.form(Book.class).fill(bookFound);
@@ -70,10 +72,13 @@ public class BooksController extends Controller {
 
     public Result update(){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest();
+        System.out.println("Req : "+Http.Context.current().request().body());//Http.Context.current().request().body().asJson()
 
         if(bookForm.hasErrors()){
             flash("danger", "Please correct the form below");
-            return badRequest(edit.render(bookForm));
+//            return badRequest(edit.render(bookForm));
+//            return internalServerError();
+            return ok();
         }
 
         Book book = bookForm.get();
@@ -81,7 +86,8 @@ public class BooksController extends Controller {
         Book bookUpdate = Book.finder.byId(book.id);
 
         if(bookUpdate == null){
-            return notFound("Book not found");
+            flash("warning", "Book not found");
+            return notFound();
         }
         bookUpdate.price = book.price;
         bookUpdate.author = book.author;
@@ -90,7 +96,8 @@ public class BooksController extends Controller {
 //        bookUpdate.save();
         bookUpdate.update();
         flash("success", "Book updated successfully");
-        return redirect(routes.BooksController.index());
+//        return redirect(routes.BooksController.index());
+        return ok();
     }
 
     public Result destroy(Integer id){

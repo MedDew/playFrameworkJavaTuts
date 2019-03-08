@@ -26,7 +26,7 @@ GET /books/:id  controllers.BooksController.show(id : Integer)
 GET /books/edit/:id  controllers.BooksController.edit(id : Integer)
 
 +nocsrf
-POST /books/edit  controllers.BooksController.update()
+PUT /books/edit  controllers.BooksController.update()
 
 +nocsrf
 DELETE /books/delete/:id controllers.BooksController.destroy(id : Integer)

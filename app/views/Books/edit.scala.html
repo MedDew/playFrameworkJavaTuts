@@ -4,14 +4,15 @@
 
 @layout("Edit Book"){
         <h1>Edit Book</h1>
-        @helper.form(action = routes.BooksController.update()){
+        @helper.form(action = routes.BooksController.update(), 'id -> "bookUpdateForm"){
 
             @_bookFormFields(bookForm)
 
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-edit"></i>
-                Update Book
-            </button>
+
             @layouttest()
         }
+        <button class="btn btn-primary" onclick="sendPutRequest('bookUpdateForm', '@routes.BooksController.edit(bookForm.get().id)')">
+            <i class="fas fa-edit"></i>
+            Update Book
+        </button>
 }
